@@ -6,10 +6,11 @@
   --color-blue: #2563eb;
   --color-blue-hover: #1d4ed8;
   --color-white: #ffffff;
-  --color-light-grey: #f4f6f8;
+  --color-bg: #f1f5f9;
+  --color-light-grey: #eef2f6;
   --color-dark-text: #172033;
   --color-muted-text: #5b6474;
-  --color-border: #d8dee6;
+  --color-border: #cbd5e1;
   --color-card-border: #e2e8f0;
   --color-success: #18794e;
   --color-success-bg: #edf7f2;
@@ -41,7 +42,7 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--color-dark-text);
-  background-color: var(--color-white);
+  background-color: var(--color-bg);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -142,7 +143,8 @@ p:last-child {
   position: sticky;
   top: 0;
   background-color: var(--color-white);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-card-border);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
   z-index: 1000;
 }
 
@@ -178,6 +180,7 @@ p:last-child {
   text-decoration: none;
   padding: 0.35rem 0;
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -215,7 +218,7 @@ p:last-child {
   border-radius: var(--border-radius);
   text-decoration: none;
   cursor: pointer;
-  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, transform var(--transition-speed) ease;
 }
 
 .btn-primary {
@@ -232,12 +235,17 @@ p:last-child {
 .btn-secondary {
   background-color: var(--color-white);
   color: var(--color-navy);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-card-border);
 }
 
 .btn-secondary:hover {
   background-color: var(--color-light-grey);
   color: var(--color-navy);
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
 }
 
 .button-group {
@@ -258,13 +266,14 @@ p:last-child {
 
 .pill {
   display: inline-block;
-  background-color: var(--color-light-grey);
+  background-color: var(--color-white);
   color: var(--color-dark-text);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-card-border);
   border-radius: 9999px;
-  padding: 0.25rem 0.75rem;
+  padding: 0.35rem 0.85rem;
   font-size: 0.85rem;
   font-weight: 500;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
 }
 
 /* Development Stage Badge */
@@ -306,16 +315,17 @@ p:last-child {
    Page Sections
    ========================================================================== */
 .section {
-  padding: 4rem 0;
-  border-bottom: 1px solid var(--color-border);
+  padding: 3.5rem 0;
 }
 
 .section-alt {
-  background-color: var(--color-light-grey);
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-card-border);
+  border-bottom: 1px solid var(--color-card-border);
 }
 
 .section-header {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .section-title {
@@ -324,37 +334,44 @@ p:last-child {
 
 .section-subtitle {
   color: var(--color-muted-text);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 
 /* ==========================================================================
    Hero Component
    ========================================================================== */
 .hero {
-  padding: 4rem 0 3.5rem;
+  padding: 3.5rem 0 3rem;
   background-color: var(--color-white);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-card-border);
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 3rem;
-  align-items: start;
+  grid-template-columns: 140px 1fr;
+  gap: 2.5rem;
+  align-items: center;
 }
 
 .hero-photo-wrapper {
-  width: 100%;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .profile-photo {
-  width: 100%;
-  max-width: 280px;
-  aspect-ratio: 4 / 5;
+  width: 140px;
+  height: 140px;
+  max-width: 140px;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--color-border);
-  box-shadow: 0 4px 12px rgba(15, 32, 68, 0.06);
+  border-radius: 50%;
+  border: 3px solid var(--color-white);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
+  background-color: #e2e8f0;
 }
 
 .hero-content {
@@ -363,29 +380,29 @@ p:last-child {
 }
 
 .hero-name {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--color-muted-text);
   margin-bottom: 0.25rem;
 }
 
 .hero-title {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   color: var(--color-navy);
   margin-bottom: 0.5rem;
 }
 
 .hero-descriptor {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--color-blue);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .hero-intro {
   font-size: 1.05rem;
   color: var(--color-dark-text);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 /* ==========================================================================
@@ -404,12 +421,14 @@ p:last-child {
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
-  transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease, transform var(--transition-speed) ease;
 }
 
 .card:hover {
   border-color: var(--color-blue);
-  box-shadow: 0 6px 16px rgba(15, 32, 68, 0.05);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  transform: translateY(-2px);
 }
 
 .card-category {
@@ -448,6 +467,143 @@ p:last-child {
 }
 
 /* ==========================================================================
+   Symmetrical Tile Grids (Courses, Programmes, Workshops)
+   ========================================================================== */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.25rem;
+}
+
+.item-tile {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--border-radius);
+  padding: 1.35rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--color-navy);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  transition: all var(--transition-speed) ease;
+  min-height: 95px;
+}
+
+.item-tile:hover {
+  border-color: var(--color-blue);
+  color: var(--color-blue);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  transform: translateY(-2px);
+}
+
+.item-tile-badge {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-muted-text);
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+
+.item-tile-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: inherit;
+}
+
+/* ==========================================================================
+   Scholarship and Publication Cards (2x2 Grid with Top Banner)
+   ========================================================================== */
+.scholarship-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.scholarship-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+.scholarship-card:hover {
+  border-color: var(--color-blue);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  transform: translateY(-2px);
+}
+
+.scholarship-banner {
+  width: 100%;
+  height: 160px;
+  background: linear-gradient(135deg, #0f2044 0%, #1e3a8a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.scholarship-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scholarship-banner-placeholder {
+  color: #e2e8f0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1rem;
+}
+
+.scholarship-body {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.scholarship-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 0.75rem;
+  color: var(--color-navy);
+}
+
+.scholarship-meta {
+  color: var(--color-muted-text);
+  font-size: 0.925rem;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+  line-height: 1.6;
+}
+
+.scholarship-meta p {
+  margin-bottom: 0.35rem;
+}
+
+.scholarship-meta strong {
+  color: var(--color-dark-text);
+}
+
+.scholarship-footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-card-border);
+}
+
+/* ==========================================================================
    Process Flow / Framework
    ========================================================================== */
 .process-list {
@@ -465,6 +621,7 @@ p:last-child {
   border-radius: var(--border-radius);
   padding: 1.5rem;
   counter-increment: step-counter;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
 }
 
 .process-item::before {
@@ -494,7 +651,11 @@ p:last-child {
   padding: 1.5rem;
   border-radius: var(--border-radius);
   border-left: 4px solid var(--color-blue);
-  background-color: var(--color-light-grey);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-card-border);
+  border-left-width: 4px;
+  border-left-color: var(--color-blue);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
   margin: 1.5rem 0;
 }
 
@@ -549,7 +710,7 @@ p:last-child {
   align-items: center;
   padding: 2rem 0;
   margin-top: 3rem;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-card-border);
   gap: 1rem;
 }
 
@@ -588,10 +749,11 @@ p:last-child {
    ========================================================================== */
 .project-figure {
   margin: 2rem 0;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-card-border);
   border-radius: var(--border-radius);
   overflow: hidden;
-  background-color: var(--color-light-grey);
+  background-color: var(--color-white);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
 }
 
 .project-figure img {
@@ -602,7 +764,7 @@ p:last-child {
   padding: 0.75rem 1rem;
   font-size: 0.85rem;
   color: var(--color-muted-text);
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-card-border);
   background-color: var(--color-white);
 }
 
@@ -647,6 +809,7 @@ p:last-child {
   display: flex;
   gap: 1.5rem;
   list-style: none;
+  flex-wrap: wrap;
 }
 
 .footer-links a {
@@ -678,17 +841,27 @@ p:last-child {
    Responsive Breakpoints
    ========================================================================== */
 @media (max-width: 860px) {
-  .hero-grid {
+  .scholarship-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .profile-photo {
-    max-width: 220px;
   }
 }
 
 @media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .hero-content {
+    align-items: center;
+  }
+
+  .button-group {
+    justify-content: center;
+  }
+
   .nav-toggle {
     display: block;
   }
@@ -702,8 +875,8 @@ p:last-child {
     background-color: var(--color-white);
     flex-direction: column;
     padding: 1.5rem;
-    border-bottom: 1px solid var(--color-border);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid var(--color-card-border);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
     gap: 1rem;
   }
 
