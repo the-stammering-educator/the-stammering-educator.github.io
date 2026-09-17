@@ -604,44 +604,84 @@ p:last-child {
 }
 
 /* ==========================================================================
-   Process Flow / Framework
+   Professional Recognition and Memberships Cards
    ========================================================================== */
-.process-list {
-  list-style: none;
+.recognition-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
-  counter-reset: step-counter;
 }
 
-.process-item {
-  position: relative;
+.recognition-card {
   background-color: var(--color-white);
   border: 1px solid var(--color-card-border);
   border-radius: var(--border-radius);
-  padding: 1.5rem;
-  counter-increment: step-counter;
+  padding: 1.5rem 1.75rem;
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  display: flex;
+  flex-direction: column;
 }
 
-.process-item::before {
-  content: counter(step-counter);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  background-color: var(--color-navy);
-  color: var(--color-white);
-  border-radius: 50%;
+.recognition-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+}
+
+.recognition-card.accent-green {
+  border-left: 5px solid var(--color-success);
+}
+
+.recognition-card.accent-blue {
+  border-left: 5px solid var(--color-blue);
+}
+
+.recognition-card.accent-navy {
+  border-left: 5px solid var(--color-navy);
+}
+
+.recognition-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.75rem;
   font-weight: 700;
-  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
   margin-bottom: 0.75rem;
 }
 
-.process-title {
+.accent-green .recognition-badge {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+  border: 1px solid #bbf7d0;
+}
+
+.accent-blue .recognition-badge {
+  background-color: #eff6ff;
+  color: var(--color-blue);
+  border: 1px solid #bfdbfe;
+}
+
+.accent-navy .recognition-badge {
+  background-color: #f1f5f9;
+  color: var(--color-navy);
+  border: 1px solid #cbd5e1;
+}
+
+.recognition-title {
   font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-navy);
   margin-bottom: 0.5rem;
+}
+
+.recognition-desc {
+  font-size: 0.95rem;
+  color: var(--color-muted-text);
+  margin-bottom: 0;
+  line-height: 1.5;
 }
 
 /* ==========================================================================
